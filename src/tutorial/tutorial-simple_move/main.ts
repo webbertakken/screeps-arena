@@ -1,5 +1,6 @@
 import { getObjectsByPrototype } from 'game/utils'
-import { Creep, Flag } from 'game/prototypes'
+import { Creep } from 'game/prototypes'
+import { Flag } from 'arena/prototypes'
 
 export function loop() {
   const creeps = getObjectsByPrototype(Creep)

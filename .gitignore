@@ -12,9 +12,6 @@
 #!.yarn/cache
 .pnp.*
 
-# yarn lock file
-/yarn.lock
-
 # npm lock file (v5.0.0+)
 /package-lock.json
 
