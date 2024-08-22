@@ -7,7 +7,6 @@ export function loop() {
 
   const creeps = getObjectsByPrototype(Creep).filter((creep) => creep.my)
   const flags = getObjectsByPrototype(Flag)
-  console.log('test')
 
   for (const creep of creeps) {
     const closestFlag = creep.findClosestByPath(flags)

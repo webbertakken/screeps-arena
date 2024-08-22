@@ -9,7 +9,7 @@ export class Units {
 
     for (const creep of myCreeps) {
       const unit = creep as Unit
-      if (!unit) continue
+      if (!unit || !unit.body) continue
 
       if (unit.body.some((part) => part.type === 'carry')) {
         units.workers.push(Worker.register(unit, units.workers.length))

@@ -1,8 +1,7 @@
 import { UnitData } from './UnitData'
 import { CARRY, WORK } from 'game/constants'
 import { Unit } from './Unit'
-import { BodyPartType, Creep } from 'game/prototypes'
-import { Body } from './Body'
+import { Body, BodyOrParts } from './Body'
 
 export type WorkerType = 'truck' | 'builder' | 'unspecified'
 
@@ -29,8 +28,8 @@ export class Worker {
     return worker
   }
 
-  static detectType(bodyOrParts: Creep['body'] | BodyPartType[]): WorkerType {
-    const body = bodyOrParts.some((part) => part.type) ? bodyOrParts : Body.fromParts(bodyOrParts)
+  static detectType(bodyOrParts: BodyOrParts): WorkerType {
+    const body = Body.from(bodyOrParts)
 
     if (body.some((part) => part.type === WORK)) {
       return 'builder'

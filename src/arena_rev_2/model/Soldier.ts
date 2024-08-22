@@ -1,8 +1,7 @@
 import { UnitData } from './UnitData'
 import { ATTACK, HEAL, RANGED_ATTACK } from 'game/constants'
 import { Unit } from './Unit'
-import { Body } from './Body'
-import { BodyPartType, Creep } from 'game/prototypes'
+import { Body, BodyOrParts } from './Body'
 
 export type SoldierType = 'ranger' | 'medic' | 'melee' | 'unspecified'
 
@@ -30,8 +29,8 @@ export class Soldier {
     return soldier
   }
 
-  static detectType(bodyOrParts: Creep['body'] | BodyPartType[]): SoldierType {
-    const body = bodyOrParts.some((part) => part.type) ? bodyOrParts : Body.fromParts(bodyOrParts)
+  static detectType(bodyOrParts: BodyOrParts): SoldierType {
+    const body = Body.from(bodyOrParts)
 
     if (body.some((part) => part.type === ATTACK)) {
       return 'melee'
